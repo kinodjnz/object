@@ -82,6 +82,8 @@ impl<'a> Object<'a> {
             Architecture::PowerPc64 => true,
             Architecture::Riscv64 => true,
             Architecture::Riscv32 => true,
+            Architecture::Cramp64 => true,
+            Architecture::Cramp32 => true,
             Architecture::S390x => true,
             Architecture::Sparc64 => true,
             _ => {
@@ -279,6 +281,8 @@ impl<'a> Object<'a> {
             Architecture::PowerPc64 => elf::EM_PPC64,
             Architecture::Riscv32 => elf::EM_RISCV,
             Architecture::Riscv64 => elf::EM_RISCV,
+            Architecture::Cramp32 => elf::EM_CRAMP,
+            Architecture::Cramp64 => elf::EM_CRAMP,
             Architecture::S390x => elf::EM_S390,
             Architecture::Sparc64 => elf::EM_SPARCV9,
             _ => {
@@ -582,7 +586,20 @@ impl<'a> Object<'a> {
                                     )));
                                 }
                             }
-                        }
+                        },
+                        Architecture::Cramp32 | Architecture::Cramp64 => {
+                            match (reloc.kind, reloc.encoding, reloc.size) {
+                                (RelocationKind::Absolute, _, 32) => elf::R_CRAMP_32,
+                                (RelocationKind::Absolute, _, 64) => elf::R_CRAMP_64,
+                                (RelocationKind::Elf(x), _, _) => x,
+                                _ => {
+                                    return Err(Error(format!(
+                                        "unimplemented relocation {:?}",
+                                        reloc
+                                    )));
+                                }
+                            }
+                        },
                         Architecture::S390x => match (reloc.kind, reloc.encoding, reloc.size) {
                             (RelocationKind::Absolute, RelocationEncoding::Generic, 8) => {
                                 elf::R_390_8

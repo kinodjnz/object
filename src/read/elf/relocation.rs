@@ -331,6 +331,11 @@ fn parse_relocation<Elf: FileHeader>(
             elf::R_RISCV_64 => (RelocationKind::Absolute, 64),
             r_type => (RelocationKind::Elf(r_type), 0),
         },
+        elf::EM_CRAMP => match reloc.r_type(endian, false) {
+            elf::R_CRAMP_32 => (RelocationKind::Absolute, 32),
+            elf::R_CRAMP_64 => (RelocationKind::Absolute, 64),
+            r_type => (RelocationKind::Elf(r_type), 0),
+        },
         elf::EM_S390 => match reloc.r_type(endian, false) {
             elf::R_390_8 => (RelocationKind::Absolute, 8),
             elf::R_390_16 => (RelocationKind::Absolute, 16),

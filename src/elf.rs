@@ -572,6 +572,8 @@ pub const EM_AMDGPU: u16 = 224;
 pub const EM_RISCV: u16 = 243;
 /// Linux BPF -- in-kernel virtual machine
 pub const EM_BPF: u16 = 247;
+/// Cramp
+pub const EM_CRAMP: u16 = 249;
 /// C-SKY
 pub const EM_CSKY: u16 = 252;
 /// Loongson LoongArch
@@ -6113,6 +6115,130 @@ pub const R_RISCV_SET16: u32 = 55;
 pub const R_RISCV_SET32: u32 = 56;
 #[allow(missing_docs)]
 pub const R_RISCV_32_PCREL: u32 = 57;
+
+// Cramp values `FileHeader*::e_flags`.
+#[allow(missing_docs)]
+pub const EF_CRAMP_RVC: u32 = 0x0001;
+#[allow(missing_docs)]
+pub const EF_CRAMP_FLOAT_ABI: u32 = 0x0006;
+#[allow(missing_docs)]
+pub const EF_CRAMP_FLOAT_ABI_SOFT: u32 = 0x0000;
+#[allow(missing_docs)]
+pub const EF_CRAMP_FLOAT_ABI_SINGLE: u32 = 0x0002;
+#[allow(missing_docs)]
+pub const EF_CRAMP_FLOAT_ABI_DOUBLE: u32 = 0x0004;
+#[allow(missing_docs)]
+pub const EF_CRAMP_FLOAT_ABI_QUAD: u32 = 0x0006;
+
+// RISC-V values `Rel*::r_type`.
+#[allow(missing_docs)]
+pub const R_CRAMP_NONE: u32 = 0;
+#[allow(missing_docs)]
+pub const R_CRAMP_32: u32 = 1;
+#[allow(missing_docs)]
+pub const R_CRAMP_64: u32 = 2;
+#[allow(missing_docs)]
+pub const R_CRAMP_RELATIVE: u32 = 3;
+#[allow(missing_docs)]
+pub const R_CRAMP_COPY: u32 = 4;
+#[allow(missing_docs)]
+pub const R_CRAMP_JUMP_SLOT: u32 = 5;
+#[allow(missing_docs)]
+pub const R_CRAMP_TLS_DTPMOD32: u32 = 6;
+#[allow(missing_docs)]
+pub const R_CRAMP_TLS_DTPMOD64: u32 = 7;
+#[allow(missing_docs)]
+pub const R_CRAMP_TLS_DTPREL32: u32 = 8;
+#[allow(missing_docs)]
+pub const R_CRAMP_TLS_DTPREL64: u32 = 9;
+#[allow(missing_docs)]
+pub const R_CRAMP_TLS_TPREL32: u32 = 10;
+#[allow(missing_docs)]
+pub const R_CRAMP_TLS_TPREL64: u32 = 11;
+#[allow(missing_docs)]
+pub const R_CRAMP_BRANCH: u32 = 16;
+#[allow(missing_docs)]
+pub const R_CRAMP_JAL: u32 = 17;
+#[allow(missing_docs)]
+pub const R_CRAMP_CALL: u32 = 18;
+#[allow(missing_docs)]
+pub const R_CRAMP_CALL_PLT: u32 = 19;
+#[allow(missing_docs)]
+pub const R_CRAMP_GOT_HI20: u32 = 20;
+#[allow(missing_docs)]
+pub const R_CRAMP_TLS_GOT_HI20: u32 = 21;
+#[allow(missing_docs)]
+pub const R_CRAMP_TLS_GD_HI20: u32 = 22;
+#[allow(missing_docs)]
+pub const R_CRAMP_PCREL_HI20: u32 = 23;
+#[allow(missing_docs)]
+pub const R_CRAMP_PCREL_LO12_I: u32 = 24;
+#[allow(missing_docs)]
+pub const R_CRAMP_PCREL_LO12_S: u32 = 25;
+#[allow(missing_docs)]
+pub const R_CRAMP_HI20: u32 = 26;
+#[allow(missing_docs)]
+pub const R_CRAMP_LO12_I: u32 = 27;
+#[allow(missing_docs)]
+pub const R_CRAMP_LO12_S: u32 = 28;
+#[allow(missing_docs)]
+pub const R_CRAMP_TPREL_HI20: u32 = 29;
+#[allow(missing_docs)]
+pub const R_CRAMP_TPREL_LO12_I: u32 = 30;
+#[allow(missing_docs)]
+pub const R_CRAMP_TPREL_LO12_S: u32 = 31;
+#[allow(missing_docs)]
+pub const R_CRAMP_TPREL_ADD: u32 = 32;
+#[allow(missing_docs)]
+pub const R_CRAMP_ADD8: u32 = 33;
+#[allow(missing_docs)]
+pub const R_CRAMP_ADD16: u32 = 34;
+#[allow(missing_docs)]
+pub const R_CRAMP_ADD32: u32 = 35;
+#[allow(missing_docs)]
+pub const R_CRAMP_ADD64: u32 = 36;
+#[allow(missing_docs)]
+pub const R_CRAMP_SUB8: u32 = 37;
+#[allow(missing_docs)]
+pub const R_CRAMP_SUB16: u32 = 38;
+#[allow(missing_docs)]
+pub const R_CRAMP_SUB32: u32 = 39;
+#[allow(missing_docs)]
+pub const R_CRAMP_SUB64: u32 = 40;
+#[allow(missing_docs)]
+pub const R_CRAMP_GNU_VTINHERIT: u32 = 41;
+#[allow(missing_docs)]
+pub const R_CRAMP_GNU_VTENTRY: u32 = 42;
+#[allow(missing_docs)]
+pub const R_CRAMP_ALIGN: u32 = 43;
+#[allow(missing_docs)]
+pub const R_CRAMP_RVC_BRANCH: u32 = 44;
+#[allow(missing_docs)]
+pub const R_CRAMP_RVC_JUMP: u32 = 45;
+#[allow(missing_docs)]
+pub const R_CRAMP_RVC_LUI: u32 = 46;
+#[allow(missing_docs)]
+pub const R_CRAMP_GPREL_I: u32 = 47;
+#[allow(missing_docs)]
+pub const R_CRAMP_GPREL_S: u32 = 48;
+#[allow(missing_docs)]
+pub const R_CRAMP_TPREL_I: u32 = 49;
+#[allow(missing_docs)]
+pub const R_CRAMP_TPREL_S: u32 = 50;
+#[allow(missing_docs)]
+pub const R_CRAMP_RELAX: u32 = 51;
+#[allow(missing_docs)]
+pub const R_CRAMP_SUB6: u32 = 52;
+#[allow(missing_docs)]
+pub const R_CRAMP_SET6: u32 = 53;
+#[allow(missing_docs)]
+pub const R_CRAMP_SET8: u32 = 54;
+#[allow(missing_docs)]
+pub const R_CRAMP_SET16: u32 = 55;
+#[allow(missing_docs)]
+pub const R_CRAMP_SET32: u32 = 56;
+#[allow(missing_docs)]
+pub const R_CRAMP_32_PCREL: u32 = 57;
 
 // BPF values `Rel*::r_type`.
 /// No reloc

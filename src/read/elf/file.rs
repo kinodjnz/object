@@ -172,6 +172,8 @@ where
             (elf::EM_PPC64, _) => Architecture::PowerPc64,
             (elf::EM_RISCV, false) => Architecture::Riscv32,
             (elf::EM_RISCV, true) => Architecture::Riscv64,
+            (elf::EM_CRAMP, false) => Architecture::Cramp32,
+            (elf::EM_CRAMP, true) => Architecture::Cramp64,
             // This is either s390 or s390x, depending on the ELF class.
             // We only support the 64-bit variant s390x here.
             (elf::EM_S390, true) => Architecture::S390x,
